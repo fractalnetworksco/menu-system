@@ -50,7 +50,7 @@ export default function App() {
           <div className="h-10 w-px bg-gray-500"></div>
         </div>
         <div className="w-1/5">
-          <img src="path_to_your_image.jpg" alt="Restaurant Image" className="h-full w-full object-cover" />
+          <img src="restaurant.jpg" alt="Restaurant Image" className="h-full w-full object-cover" />
         </div>
       </div>
       <div className="mt-10px mx-auto w-3/4 flex justify-between items-center">
@@ -59,11 +59,16 @@ export default function App() {
       <div className="mt-8vh mx-auto w-3/4 flex justify-between">
         <Column>
           <MenuSection data={{ title: "STARTERS", items: startersData }} /> {/* Pass starters data to MenuSection */}
-        </Column>
-        <Column>
           <MenuSection data={{ title: "POBOYS", items: poboysData }} /> {/* Pass poboys data to MenuSection */}
         </Column>
-        {/* Add more columns for other menu sections if needed */}
+        <Column>
+          <MenuSection data={{ title: "STARTERS", items: startersData }} /> {/* Pass starters data to MenuSection */}
+          <MenuSection data={{ title: "POBOYS", items: poboysData }} /> {/* Pass poboys data to MenuSection */}
+        </Column>
+        <Column>
+          <MenuSection data={{ title: "STARTERS", items: startersData }} /> {/* Pass starters data to MenuSection */}
+          <MenuSection data={{ title: "POBOYS", items: poboysData }} /> {/* Pass poboys data to MenuSection */}
+        </Column>
       </div>
     </div>
   );
