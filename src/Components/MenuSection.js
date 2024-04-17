@@ -3,8 +3,6 @@ import MenuItem from './MenuItem';
 import MenuHeader from './Menu-Header'; // Import MenuHeader component
 
 const MenuSection = ({ data }) => {
-  console.log('right here============', data);
-
   // Check if the items array is empty
   if (data.items.length === 0) {
     return (
