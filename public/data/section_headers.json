@@ -1,0 +1,22 @@
+[
+  {
+    "section": "Starters",
+    "description": ""
+  },
+  {
+    "section": "Fried Grilled Burgers",
+    "description": "Served with one side choice Topped with lettuce, tomato, onion, pickles, mayo and mustard"
+  },
+  {
+    "section": "Salads",
+    "description": "A blend of romaine and iceberg lettuce, topped with croutons, bacon bits, tomatoes, cucumbers, green onions and blended cheeses."
+  },
+  {
+    "section": "Po Boys",
+    "description": "Served with one side choice Dressed with pickles, lettuce and tomato"
+  },
+  {
+    "section": "Wraps",
+    "description": "Served with one side choice Dressed with mayo, lettuce and tomato"
+  }
+]
