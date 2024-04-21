@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Column = ({ children }) => {
+const Column = ({ children, width }) => {
   return (
-    <div className="h-full border border-green-300 mx-1">
+    <div className={`h-full mx-1 ${width}`}> {/* Apply width dynamically */}
       {children}
     </div>
   );

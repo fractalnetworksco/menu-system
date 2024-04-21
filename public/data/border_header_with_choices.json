@@ -1,4 +1,3 @@
-
 [
   {
     "section": "Dressing Choices",
@@ -6,8 +5,8 @@
     "choices": ["Thousand Island", "Ranch", "Italian", "House", "Honey Mustard", "Blue Cheese", "Boom Boom Sauce", "Sun-dried tomato Vinaigrette", "Wine and cheese"]
   },
   {
-    "section": "Estra Add Ons",
+    "section": "Extra Add Ons",
     "note": "Can be added to all sandwiches.",
-    "description": ["Bacon $2.09", "Cheese $0.69", "Sauteed onions and peppers $1.69"]
+    "choices": ["Bacon $2.09", "Cheese $0.69", "Sauteed onions and peppers $1.69"]
   }
 ]

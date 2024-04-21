@@ -1,13 +1,17 @@
+// MenuSection.js
 import React from 'react';
 import MenuItem from './MenuItem';
-import MenuHeader from './Menu-Header'; // Import MenuHeader component
+import MenuHeaderWithDescription from './MenuHeaderWithDescription';
 
-const MenuSection = ({ data }) => {
+const MenuSection = ({ data, descriptions }) => {
+  // Find the description for the current section
+  const sectionDescription = descriptions.find(section => section.section === data.title);
+
   // Check if the items array is empty
   if (data.items.length === 0) {
     return (
       <div className="mt-8">
-        <MenuHeader title={data.title} /> {/* Render MenuHeader with the section title */}
+        <MenuHeaderWithDescription title={data.title} description={sectionDescription ? sectionDescription.description : ''} />
         <div>No menu items available</div>
       </div>
     );
@@ -15,7 +19,7 @@ const MenuSection = ({ data }) => {
 
   return (
     <div className="mt-8">
-      <MenuHeader title={data.title} /> {/* Render MenuHeader with the section title */}
+      <MenuHeaderWithDescription title={data.title} description={sectionDescription ? sectionDescription.description : ''} />
       {data.items.map((menuItem, index) => (
         <div key={index}>
           <MenuItem

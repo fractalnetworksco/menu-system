@@ -1,55 +1,98 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Column from './Components/Column.js';
-import MenuHeader from './Components/Menu-Header.js';
-import TopLine from './Components/TopLine.js';
-import MenuSection from './Components/MenuSection'; // Import MenuSection component
-import RestaurantHeader from './Components/RestaurantHeader.js';
+import MenuSection from './Components/MenuSection';
+import SelectionMenu from './Components/SelectionMenu';
+import SelectionMenuWithNote from './Components/SelectionMenuWithNote';
+import ImageHolder from './Components/ImageHolder';
 
 export default function App() {
   const [startersData, setStartersData] = useState([]);
   const [poboysData, setPoboysData] = useState([]);
+  const [wrapsData, setWrapsData] = useState([]);
+  const [sectionHeaders, setSectionHeaders] = useState([]);
+  const [dressingChoices, setDressingChoices] = useState([]);
+  const [extraAddOns, setExtraAddOns] = useState([]);
+  const [extraAddOnsNote, setExtraAddOnsNote] = useState("");
+  const [friedGrilledBurgersData, setFriedGrilledBurgersData] = useState([]); // State for Fried Grilled Burgers
 
   useEffect(() => {
-    const fetchStartersData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/data/starters.json');
-        const data = await response.json();
-        console.log('Starters data:', data); // Add this line to log the fetched data
-        setStartersData(data);
+        // Fetch data for Starters
+        const startersResponse = await fetch('/data/starters.json');
+        const startersData = await startersResponse.json();
+        console.log('Starters data:', startersData);
+        setStartersData(startersData);
+
+        // Fetch data for Fried Grilled Burgers
+        const friedGrilledBurgersResponse = await fetch('/data/fried_grilled_burgers.json');
+        const friedGrilledBurgersData = await friedGrilledBurgersResponse.json();
+        console.log('Fried Grilled Burgers data:', friedGrilledBurgersData);
+        setFriedGrilledBurgersData(friedGrilledBurgersData);
+
+        // Fetch data for Po Boys
+        const poboysResponse = await fetch('/data/poboys.json');
+        const poboysData = await poboysResponse.json();
+        console.log('Poboys data:', poboysData);
+        setPoboysData(poboysData);
+
+        // Fetch data for Wraps
+        const wrapsResponse = await fetch('/data/wraps.json');
+        const wrapsData = await wrapsResponse.json();
+        console.log('Wraps data:', wrapsData);
+        setWrapsData(wrapsData);
+
+        // Fetch data for section headers
+        const sectionHeadersResponse = await fetch('/data/section_headers.json');
+        const sectionHeadersData = await sectionHeadersResponse.json();
+        console.log('Section headers data:', sectionHeadersData);
+        setSectionHeaders(sectionHeadersData);
+
+        // Fetch data for Dressing Choices
+        const dressingChoicesResponse = await fetch('/data/border_header_with_choices.json');
+        const dressingChoicesData = await dressingChoicesResponse.json();
+        console.log('Dressing Choices data:', dressingChoicesData);
+        const dressingChoices = dressingChoicesData.find(item => item.section === 'Dressing Choices');
+        if (dressingChoices) {
+          setDressingChoices(dressingChoices.choices);
+        }
+
+        // Fetch data for Extra Add Ons
+        const extraAddOnsResponse = await fetch('/data/border_header_with_choices.json');
+        const extraAddOnsData = await extraAddOnsResponse.json();
+        console.log('Extra Add Ons data:', extraAddOnsData);
+        const extraAddOns = extraAddOnsData.find(item => item.section === 'Extra Add Ons');
+        if (extraAddOns) {
+          setExtraAddOns(extraAddOns.choices);
+          setExtraAddOnsNote(extraAddOns.note);
+        }
       } catch (error) {
-        console.error('Error fetching starters data:', error);
+        console.error('Error fetching data:', error);
       }
     };
 
-    const fetchPoboysData = async () => {
-      try {
-        const response = await fetch('/data/poboys.json');
-        const data = await response.json();
-        console.log('Poboys data:', data); // Add this line to log the fetched data
-        setPoboysData(data);
-      } catch (error) {
-        console.error('Error fetching poboys data:', error);
-      }
-    };
-
-    fetchStartersData();
-    fetchPoboysData();
+    fetchData();
   }, []);
 
   return (
-    <div className="w-5/6 mx-auto"> {/* Adjust the width here and add mx-auto for centering */}
+    <div className="w-5/6 mx-auto">
       <div className="mt-10px flex justify-between items-center">
         <div className="w-full h-px bg-gray-500"></div>
       </div>
       <div className="mt-8vh flex justify-between">
-        <Column>
-          <MenuSection data={{ title: "STARTERS", items: startersData }} /> {/* Pass starters data to MenuSection */}
-          <MenuSection data={{ title: "POBOYS", items: poboysData }} /> {/* Pass poboys data to MenuSection */}
+        <Column width="w-1/2">
+          <MenuSection data={{ title: "Starters", items: startersData }} descriptions={sectionHeaders} />
+          <MenuSection data={{ title: "Salads", items: startersData }} descriptions={sectionHeaders} />
+          <SelectionMenu title="Dressing Choices" choices={dressingChoices} />
+          <ImageHolder imageUrl="/salad.jpg" height="300px" />
         </Column>
-        <Column>
-          <MenuSection data={{ title: "STARTERS", items: startersData }} /> {/* Pass starters data to MenuSection */}
-          <MenuSection data={{ title: "POBOYS", items: poboysData }} /> {/* Pass poboys data to MenuSection */}
+        <Column width="w-1/2">
+          <MenuSection data={{ title: "Fried Grilled Burgers", items: friedGrilledBurgersData }} descriptions={sectionHeaders} />
+          <ImageHolder imageUrl="/poboy.jpg" height="300px" />
+          <MenuSection data={{ title: "Po Boys", items: poboysData }} descriptions={sectionHeaders} />
+          <MenuSection data={{ title: "Wraps", items: wrapsData }} descriptions={sectionHeaders} />
+          <SelectionMenuWithNote title="Extra Add Ons" note={extraAddOnsNote} choices={extraAddOns} />
         </Column>
       </div>
     </div>
