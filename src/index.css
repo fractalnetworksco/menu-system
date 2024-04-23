@@ -61,3 +61,12 @@ code {
 .glacial-indifference-regular {
   font-family: 'Glacial Indifference', sans-serif; 
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: 100vh;
+  flex: 1;
+  padding: 20px; /* Adjust the padding as needed */
+}

@@ -1,0 +1,7 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: 100%; /* Set height to 100% */
+  padding: 20px; /* Adjust the padding as needed */
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import '../Column.css'; // Import the corresponding CSS file
 
-const Column = ({ children, width }) => {
+const Column = ({ children }) => {
   return (
-    <div className={`h-full mx-1 ${width}`}> {/* Apply width dynamically */}
+    <div className="column">
       {children}
     </div>
   );

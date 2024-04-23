@@ -1,4 +1,17 @@
-body {
+html, body {
   text-align: center;
   background-color: floralwhite;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: 100vh;
+  flex: 1;
+  padding: 20px; /* Adjust the padding as needed */
+}
+
