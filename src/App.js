@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Column from './Components/Column.js';
@@ -6,76 +5,56 @@ import MenuSection from './Components/MenuSection';
 import SelectionMenu from './Components/SelectionMenu';
 import SelectionMenuWithNote from './Components/SelectionMenuWithNote';
 import ImageHolder from './Components/ImageHolder';
+import axios from 'axios';
+import { useQuery, QueryClient, QueryClientProvider } from 'react-query';
 
-export default function App() {
-  const [startersData, setStartersData] = useState([]);
-  const [poboysData, setPoboysData] = useState([]);
-  const [wrapsData, setWrapsData] = useState([]);
-  const [saladsData, setSaladsData] = useState([]);
-  const [sectionHeaders, setSectionHeaders] = useState([]);
-  const [dressingChoices, setDressingChoices] = useState([]);
-  const [extraAddOns, setExtraAddOns] = useState([]);
-  const [extraAddOnsNote, setExtraAddOnsNote] = useState("");
-  const [friedGrilledBurgersData, setFriedGrilledBurgersData] = useState([]);
+const REFRESH_INTERVAL = 30000; // Refresh interval in milliseconds (30 seconds)
 
+const fetchData = async (url) => {
+  const response = await axios.get(url);
+  return response.data;
+};
+
+const queryClient = new QueryClient();
+
+function App() {
   const leftColumnRef = useRef(null);
   const rightColumnRef = useRef(null);
 
+  const { data: startersData } = useQuery('starters', () => fetchData('/data/starters.json'));
+  const { data: friedGrilledBurgersData } = useQuery('friedGrilledBurgers', () => fetchData('/data/fried_grilled_burgers.json'));
+  const { data: saladsData } = useQuery('salads', () => fetchData('/data/salads.json'));
+  const { data: poboysData } = useQuery('poboys', () => fetchData('/data/poboys.json'));
+  const { data: wrapsData } = useQuery('wraps', () => fetchData('/data/wraps.json'));
+  const { data: sectionHeaders, isLoading: sectionHeadersLoading, isError: sectionHeadersError } = useQuery('sectionHeaders', () => fetchData('/data/section_headers.json'));
+  const { data: dressingChoices } = useQuery('dressingChoices', async () => {
+    const dressingChoicesData = await fetchData('/data/border_header_with_choices.json');
+    const dressingChoices = dressingChoicesData.find(item => item.section === 'Dressing Choices');
+    return dressingChoices ? dressingChoices.choices : [];
+  });
+  const { data: extraAddOns, extraAddOnsNote } = useQuery('extraAddOns', async () => {
+    const extraAddOnsData = await fetchData('/data/border_header_with_choices.json');
+    const extraAddOns = extraAddOnsData.find(item => item.section === 'Extra Add Ons');
+    return {
+      extraAddOns: extraAddOns ? extraAddOns.choices : [],
+      extraAddOnsNote: extraAddOns ? extraAddOns.note : "",
+    };
+  });
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch data for Starters
-        const startersResponse = await fetch('/data/starters.json');
-        const startersData = await startersResponse.json();
-        setStartersData(startersData);
-
-        // Fetch data for Fried Grilled Burgers
-        const friedGrilledBurgersResponse = await fetch('/data/fried_grilled_burgers.json');
-        const friedGrilledBurgersData = await friedGrilledBurgersResponse.json();
-        setFriedGrilledBurgersData(friedGrilledBurgersData);
-
-        // Fetch data for Salads
-        const saladsResponse = await fetch('/data/salads.json');
-        const saladsData = await saladsResponse.json();
-        setSaladsData(saladsData);
-
-        // Fetch data for Po Boys
-        const poboysResponse = await fetch('/data/poboys.json');
-        const poboysData = await poboysResponse.json();
-        setPoboysData(poboysData);
-
-        // Fetch data for Wraps
-        const wrapsResponse = await fetch('/data/wraps.json');
-        const wrapsData = await wrapsResponse.json();
-        setWrapsData(wrapsData);
-
-        // Fetch data for section headers
-        const sectionHeadersResponse = await fetch('/data/section_headers.json');
-        const sectionHeadersData = await sectionHeadersResponse.json();
-        setSectionHeaders(sectionHeadersData);
-
-        // Fetch data for Dressing Choices
-        const dressingChoicesResponse = await fetch('/data/border_header_with_choices.json');
-        const dressingChoicesData = await dressingChoicesResponse.json();
-        const dressingChoices = dressingChoicesData.find(item => item.section === 'Dressing Choices');
-        if (dressingChoices) {
-          setDressingChoices(dressingChoices.choices);
-        }
-
-        // Fetch data for Extra Add Ons
-        const extraAddOnsResponse = await fetch('/data/border_header_with_choices.json');
-        const extraAddOnsData = await extraAddOnsResponse.json();
-        const extraAddOns = extraAddOnsData.find(item => item.section === 'Extra Add Ons');
-        if (extraAddOns) {
-          setExtraAddOns(extraAddOns.choices);
-          setExtraAddOnsNote(extraAddOns.note);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+    const fetchDataPeriodically = () => {
+      fetchData('/data/starters.json');
+      fetchData('/data/fried_grilled_burgers.json');
+      fetchData('/data/salads.json');
+      fetchData('/data/poboys.json');
+      fetchData('/data/wraps.json');
+      fetchData('/data/section_headers.json');
+      fetchData('/data/border_header_with_choices.json');
     };
 
-    fetchData();
+    const intervalId = setInterval(fetchDataPeriodically, REFRESH_INTERVAL);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -99,6 +78,9 @@ export default function App() {
     return () => window.removeEventListener('resize', setEqualHeight);
   }, []);
 
+  if (sectionHeadersLoading) return <div>Loading...</div>;
+  if (sectionHeadersError) return <div>Error fetching section headers.</div>;
+
   return (
     <div className="w-5/6 mx-auto flex">
       <Column width="w-1/2" ref={leftColumnRef}>
@@ -115,5 +97,13 @@ export default function App() {
         <SelectionMenuWithNote title="Extra Add Ons" note={extraAddOnsNote} choices={extraAddOns} />
       </Column>
     </div>
+  );
+}
+
+export default function WrappedApp() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   );
 }

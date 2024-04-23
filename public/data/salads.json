@@ -30,69 +30,6 @@
     "description": "Fried, Grilled, Blackened or Buffalo"
   },
   {
-    "comment": "right here"
-  },
-  {
-    "name": "SIDE SALAD",
-    "price": 5.99,
-    "description": ""
-  },
-  {
-    "name": "HOUSE SALAD",
-    "price": 8.99,
-    "description": ""
-  },
-  {
-    "name": "BEEF BRISKET",
-    "price": 16.69,
-    "description": ""
-  },
-  {
-    "name": "PULLED PORK",
-    "price": 11.99,
-    "description": ""
-  },
-  {
-    "name": "CHICKEN TENDERS",
-    "price": 11.99,
-    "description": "Fried, Grilled, Blackened or Buffalo"
-  },
-  {
-    "name": "GULF SHRIMP",
-    "price": 12.25,
-    "description": "Fried, Grilled, Blackened or Buffalo"
-  },
-  {
-    "name": "SIDE SALAD",
-    "price": 5.99,
-    "description": ""
-  },
-  {
-    "name": "HOUSE SALAD",
-    "price": 8.99,
-    "description": ""
-  },
-  {
-    "name": "BEEF BRISKET",
-    "price": 16.69,
-    "description": ""
-  },
-  {
-    "name": "PULLED PORK",
-    "price": 11.99,
-    "description": ""
-  },
-  {
-    "name": "CHICKEN TENDERS",
-    "price": 11.99,
-    "description": "Fried, Grilled, Blackened or Buffalo"
-  },
-  {
-    "name": "GULF SHRIMP",
-    "price": 12.25,
-    "description": "Fried, Grilled, Blackened or Buffalo"
-  },
-  {
     "name": "CLUB",
     "price": 10.99,
     "description": "Ham and Turkey"
