@@ -1,0 +1,17 @@
+[
+  {
+    "name": "dooey club",
+    "price": 10.49,
+    "description": "Turkey, ham, bacon, cheese, tomato, lettuce, pickle, mayo and mustard, served on house bread"
+  },
+  {
+    "name": "smoked turkey club",
+    "price": 10.49,
+    "description": "Turkey, bacon, cheese, tomato, lettuce, pickle, mayo and mustard, served on wheat berry bread"
+  },
+  {
+    "name": "smoked ham club",
+    "price": 10.49,
+    "description": "Ham, bacon, cheese, tomato, lettuce, pickle, mayo and mustard, served on wheat berry bread"
+  }
+]

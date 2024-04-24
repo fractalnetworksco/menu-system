@@ -16,6 +16,22 @@
     "description": "Served with one side choice Dressed with pickles, lettuce and tomato"
   },
   {
+    "section": "Bar B Q Sandwiches",
+    "description": "Served with one side choice. Garnished with coleslaw per request"
+  },
+  {
+    "section": "Platters",
+    "description": "Served with 2 side choices and toast"
+  },
+  {
+    "section": "Signature Dooey Sandwiches",
+    "description": "Served with one side choice."
+  },
+  {
+    "section": "Combo Platters",
+    "description": "Served with 2 side choices and toast"
+  },
+  {
     "section": "Wraps",
     "description": "Served with one side choice Dressed with mayo, lettuce and tomato"
   }
