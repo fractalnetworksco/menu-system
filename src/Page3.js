@@ -7,6 +7,7 @@ import TriColumnSection from './Components/TriColumnSection.js';
 import SelectionMenu from './Components/SelectionMenu.js';
 import SelectionMenuWithNote from './Components/SelectionMenuWithNote.js';
 import ImageHolder from './Components/ImageHolder.js';
+import MenuSectionWithNote from './Components/MenuSectionWithNote.js'; // Import MenuSectionWithNote
 import axios from 'axios';
 import { useQuery, QueryClient, QueryClientProvider } from 'react-query';
 
@@ -23,6 +24,7 @@ function App() {
   const leftColumnRef = useRef(null);
   const rightColumnRef = useRef(null);
 
+  const { data: gulfPondData } = useQuery('gulfPond', () => fetchData('/data/from_the_gulf_or_the_pond.json'));
   const { data: bbqData } = useQuery('bbq', () => fetchData('/data/bbq_sandwiches.json'));
   const { data: sigSandwiches } = useQuery('sigSandwiches', () => fetchData('/data/signature_dooey_sandwiches.json'));
   const { data: plattersData } = useQuery('platters', () => fetchData('/data/platters.json'));
@@ -30,6 +32,7 @@ function App() {
   const { data: sidesData, isLoading: sidesLoading, isError: sidesError } = useQuery('sides', () => fetchData('/data/sides.json'));
   const { data: sigFries } = useQuery('sigFries', () => fetchData('/data/signature_fries.json'));
   const { data: sectionHeaders, isLoading: sectionHeadersLoading, isError: sectionHeadersError } = useQuery('sectionHeaders', () => fetchData('/data/section_headers.json'));
+  console.log(sectionHeaders)
   const { data: dressingChoices } = useQuery('dressingChoices', async () => {
     const dressingChoicesData = await fetchData('/data/border_header_with_choices.json');
     const dressingChoices = dressingChoicesData.find(item => item.section === 'Dressing Choices');
@@ -46,6 +49,7 @@ function App() {
 
   useEffect(() => {
     const fetchDataPeriodically = () => {
+      fetchData('/data/from_the_gulf_or_the_pond.json');
       fetchData('/data/bbq_sandwiches.json');
       fetchData('/data/signature_dooey_sandwiches.json');
       fetchData('/data/platters.json');
@@ -88,7 +92,8 @@ function App() {
     <div className="w-5/6 mx-auto flex flex-col">
       <div className="flex flex-col md:flex-row">
         <Column width="w-full md:w-1/2">
-          <MenuSection data={{ title: "Bar B Q Sandwiches", items: bbqData }} descriptions={sectionHeaders} />
+          {/* <MenuSectionWIthNote></MenuSectionWIthNote> */}
+          <MenuSectionWithNote data={gulfPondData} descriptions={sectionHeaders} /> {/* Use MenuSectionWithNote */}
           <MenuSection data={{ title: "Signature Dooey Sandwiches", items: sigSandwiches }} descriptions={sectionHeaders} />
         </Column>
         <Column width="w-full md:w-1/2">

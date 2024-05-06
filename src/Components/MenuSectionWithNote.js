@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuItem from './MenuItem';
+import MenuHeaderWithDescription from './MenuHeaderWithDescription';
 
 const MenuSectionWithNote = ({ data, descriptions }) => {
   // Find the description for the current section
@@ -9,7 +10,7 @@ const MenuSectionWithNote = ({ data, descriptions }) => {
   if (!data || !data.items || data.items.length === 0) {
     return (
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">{data.title}</h2>
+        <MenuHeaderWithDescription title={data.title} description={sectionDescription ? sectionDescription.description : ''} />
         <div>No menu items available</div>
       </div>
     );
@@ -17,10 +18,10 @@ const MenuSectionWithNote = ({ data, descriptions }) => {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-semibold mb-4">{data.title}</h2>
+      <MenuHeaderWithDescription title={data.title} description={sectionDescription ? sectionDescription.description : ''} />
       {data.items.map((menuItem, index) => (
         <div key={index}>
-          {menuItem.note ? (
+          {index === 0 && menuItem.note ? (
             <div className="text-center text-black mt-2">{menuItem.note}</div>
           ) : (
             <MenuItem
