@@ -4,7 +4,7 @@ const SelectionMenu = ({ title, choices }) => {
   return (
     <div className="mt-8 w-full">
       <div className="p-4">
-        <div className="border border-gray-500 mb-4 rounded inline-block p-2">
+        <div className="border border-gray-500 mb-4 rounded inline-block px-4 py-2"> {/* Adjusted padding */}
           <h2 className="text-2xl text-[#526C3F] font-bold italic">{title}</h2> {/* Larger font for title */}
         </div>
         <div className="text-sm"> {/* Small font for descriptions */}

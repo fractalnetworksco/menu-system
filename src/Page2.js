@@ -4,8 +4,6 @@ import Column from './Components/Column.js';
 import MenuItemWithDescription from './Components/MenuItemWithDescription.js';
 import MenuSection from './Components/MenuSection.js';
 import TriColumnSection from './Components/TriColumnSection.js';
-import SelectionMenu from './Components/SelectionMenu.js';
-import SelectionMenuWithNote from './Components/SelectionMenuWithNote.js';
 import ImageHolder from './Components/ImageHolder.js';
 import axios from 'axios';
 import { useQuery, QueryClient, QueryClientProvider } from 'react-query';

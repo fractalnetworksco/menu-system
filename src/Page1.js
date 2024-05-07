@@ -32,14 +32,15 @@ function App() {
     const dressingChoices = dressingChoicesData.find(item => item.section === 'Dressing Choices');
     return dressingChoices ? dressingChoices.choices : [];
   });
-  const { data: extraAddOns, extraAddOnsNote } = useQuery('extraAddOns', async () => {
+  const { data: extraAddOnsData } = useQuery('extraAddOns', async () => {
     const extraAddOnsData = await fetchData('/data/border_header_with_choices.json');
     const extraAddOns = extraAddOnsData.find(item => item.section === 'Extra Add Ons');
     return {
-      extraAddOns: extraAddOns ? extraAddOns.choices : [],
-      extraAddOnsNote: extraAddOns ? extraAddOns.note : "",
+      choices: extraAddOns ? extraAddOns.choices : [],
+      note: extraAddOns ? extraAddOns.note : "",
     };
   });
+
 
   useEffect(() => {
     const fetchDataPeriodically = () => {
@@ -91,10 +92,12 @@ function App() {
       </Column>
       <Column width="w-1/2" ref={rightColumnRef}>
         <MenuSection data={{ title: "Fried Grilled Burgers", items: friedGrilledBurgersData }} descriptions={sectionHeaders} />
+        <p className="pr-2 italic font-bold text-[#474B4E]">Add-on: <span className="pr-2 font-normal italic text-[#474B4E]">Cheese $.69, Bacon $2.69</span></p>
         <ImageHolder imageUrl="/poboy.jpg" height="300px" />
         <MenuSection data={{ title: "Po Boys", items: poboysData }} descriptions={sectionHeaders} />
         <MenuSection data={{ title: "Wraps", items: wrapsData }} descriptions={sectionHeaders} />
-        <SelectionMenuWithNote title="Extra Add Ons" note={extraAddOnsNote} choices={extraAddOns} />
+        <SelectionMenuWithNote title="Extra Add Ons" note={extraAddOnsData.note} choices={extraAddOnsData.choices} />
+
       </Column>
     </div>
   );
