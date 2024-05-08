@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import './App.css';
 import Column from './Components/Column.js';
 import MenuSection from './Components/MenuSection';
@@ -20,6 +20,9 @@ const queryClient = new QueryClient();
 function App() {
   const leftColumnRef = useRef(null);
   const rightColumnRef = useRef(null);
+  const [leftColumnHeight, setLeftColumnHeight] = useState(0);
+  const [rightColumnHeight, setRightColumnHeight] = useState(0);
+
 
   const { data: startersData } = useQuery('starters', () => fetchData('/data/starters.json'));
   const { data: friedGrilledBurgersData } = useQuery('friedGrilledBurgers', () => fetchData('/data/fried_grilled_burgers.json'));
@@ -58,32 +61,50 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
+  //! from here
   useEffect(() => {
-    function setEqualHeight() {
-      if (leftColumnRef.current && rightColumnRef.current) {
-        const leftHeight = leftColumnRef.current.offsetHeight;
-        const rightHeight = rightColumnRef.current.offsetHeight;
-        const maxHeight = Math.max(leftHeight, rightHeight);
-        leftColumnRef.current.style.height = `${maxHeight}px`;
-        rightColumnRef.current.style.height = `${maxHeight}px`;
-      }
-    }
+    const measureHeight = () => {
+      const leftHeight = leftColumnRef.current ? leftColumnRef.current.offsetHeight : 0;
+      const rightHeight = rightColumnRef.current ? rightColumnRef.current.offsetHeight : 0;
+      setLeftColumnHeight(leftHeight);
+      setRightColumnHeight(rightHeight);
+    };
 
-    // Call setEqualHeight when the window is resized
-    window.addEventListener('resize', setEqualHeight);
+    // Wait for rendering to complete before measuring
+    setTimeout(measureHeight, 0);
+  }, [startersData, friedGrilledBurgersData, saladsData, poboysData, wrapsData, dressingChoices, extraAddOnsData, sectionHeaders]);
 
-    // Call setEqualHeight once initially
-    setEqualHeight();
+  console.log('Left Column Height:', leftColumnHeight);
+  console.log('Right Column Height:', rightColumnHeight);
+  //! to here
 
-    // Cleanup event listener
-    return () => window.removeEventListener('resize', setEqualHeight);
-  }, []);
+
+  // useEffect(() => {
+  //   function setEqualHeight() {
+  //     if (leftColumnRef.current && rightColumnRef.current) {
+  //       const leftHeight = leftColumnRef.current.offsetHeight;
+  //       const rightHeight = rightColumnRef.current.offsetHeight;
+  //       const maxHeight = Math.max(leftHeight, rightHeight);
+  //       leftColumnRef.current.style.height = `${maxHeight}px`;
+  //       rightColumnRef.current.style.height = `${maxHeight}px`;
+  //     }
+  //   }
+  //   // Call setEqualHeight when the window is resized
+  //   window.addEventListener('resize', setEqualHeight);
+
+  //   // Call setEqualHeight once initially
+  //   setEqualHeight();
+
+  //   // Cleanup event listener
+  //   return () => window.removeEventListener('resize', setEqualHeight);
+  // }, []);
 
   if (sectionHeadersLoading) return <div>Loading...</div>;
   if (sectionHeadersError) return <div>Error fetching section headers.</div>;
 
+
   return (
-    <div className="w-5/6 mx-auto flex">
+    <div className="w-5/6 mx-auto flex h-screen">
       <Column width="w-1/2" ref={leftColumnRef}>
         <MenuSection data={{ title: "Starters", items: startersData }} descriptions={sectionHeaders} />
         <MenuSection data={{ title: "Salads", items: saladsData }} descriptions={sectionHeaders} />
