@@ -28,7 +28,7 @@ const MenuSectionWithNoteAndBullets = ({ data, descriptions }) => {
       {data.items.map((menuItem, index) => (
         <div key={index}>
           {menuItem.note && (
-            <div className="note font-bold">{menuItem.note}</div>
+            <div className="note font-bold text-sm max-w-[16rem] mx-auto">{menuItem.note}</div>
           )}
           <MenuItem
             name={menuItem.name}

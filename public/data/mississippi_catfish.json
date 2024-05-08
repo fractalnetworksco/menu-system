@@ -1,16 +1,16 @@
 [
   {
-    "name": "1 Fillet",
+    "name": "1 FILLET",
     "price": 9.99,
     "description": "Served with one side choice and Hush Puppies"
   },
   {
-    "name": "2 FIllets",
+    "name": "2 FILLETS",
     "price": 16.99,
     "description": "Served with 2 side choice and Hush Puppies"
   },
   {
-    "name": "3 Fillets",
+    "name": "3 FILLETS",
     "price": 23.25,
     "description": "Served with 2 side choice and Hush Puppies"
   },
@@ -18,12 +18,12 @@
     "note": "Bone in whole fish"
   },
   {
-    "name": "1 piece",
+    "name": "1 PIECE",
     "price": 11.49,
     "description": "Served with one side choice and Hush Puppies"
   },
   {
-    "name": "2 piece",
+    "name": "2 PIECE",
     "price": 19.99,
     "description": "Served with 2 side choice and Hush Puppies"
   }

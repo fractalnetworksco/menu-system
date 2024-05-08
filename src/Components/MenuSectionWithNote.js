@@ -1,4 +1,3 @@
-// MenuSectionWithNote.js
 import React from 'react';
 import MenuItem from './MenuItem';
 import MenuHeaderWithDescription from './MenuHeaderWithDescription';
@@ -9,7 +8,6 @@ const MenuSectionWithNote = ({ data, descriptions }) => {
 
   // Find the note for the current section
   const sectionNote = data.items.find(item => item.note); // Find the first item with a note
-
 
   // Check if the items array is empty
   if (data.items.length === 0) {
@@ -27,7 +25,9 @@ const MenuSectionWithNote = ({ data, descriptions }) => {
       {data.items.map((menuItem, index) => (
         <div key={index}>
           {menuItem.note && (
-            <div className="note font-bold">{menuItem.note}</div>
+            <div className="note font-bold text-sm max-w-[16rem] mx-auto">
+              {menuItem.note}
+            </div>
           )}
           <MenuItem
             name={menuItem.name}

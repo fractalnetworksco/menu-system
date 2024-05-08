@@ -30,7 +30,9 @@ code {
   font-weight: 100;
   font-style: normal;
   color: #526C3F;
+  letter-spacing: 4px; 
 }
+
 
 .libre-baskerville-bold {
   font-family: "Libre Baskerville", serif;
@@ -58,8 +60,20 @@ code {
   src: url('../public/glacial-indifference/GlacialIndifference-Regular.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-weight: bold;
+  src: url('../public/glacial-indifference/GlacialIndifference-Regular.otf') format('opentype');
+}
+
+
 .glacial-indifference-regular {
   font-family: 'Glacial Indifference', sans-serif; 
+}
+
+.glacial-indifference-bold {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: bold;
 }
 
 .column {
