@@ -22,13 +22,13 @@ const MenuSectionWithNoteAndBullets = ({ data, descriptions }) => {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex-col flex-grow flex justify-between">
       {/* Use MenuHeaderWithBullets here */}
       <MenuHeaderWithBullets title={data.title} bullets={sectionDescription ? sectionDescription.bullets : []} />
       {data.items.map((menuItem, index) => (
         <div key={index}>
           {menuItem.note && (
-            <div className="note font-bold text-sm max-w-[16rem] mx-auto">{menuItem.note}</div>
+            <div className="note font-bold text-xl max-w-[16rem] mx-auto">{menuItem.note}</div>
           )}
           <MenuItem
             name={menuItem.name}

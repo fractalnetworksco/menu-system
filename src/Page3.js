@@ -21,9 +21,6 @@ const fetchData = async (url) => {
 const queryClient = new QueryClient();
 
 function App() {
-  const leftColumnRef = useRef(null);
-  const rightColumnRef = useRef(null);
-
   const { data: gulfPondData } = useQuery('gulfPond', () => fetchData('/data/from_the_gulf_or_the_pond.json'));
   const { data: redfishData } = useQuery('redfish', () => fetchData('/data/louisiana_redfish.json'));
   const { data: catfishData } = useQuery('catfish', () => fetchData('/data/mississippi_catfish.json'));
@@ -39,7 +36,6 @@ function App() {
 
   const { data: bullets } = useQuery('bullets', () => fetchData('/data/three_bullet_header.json'));
   const { data: sectionHeaders, isLoading: sectionHeadersLoading, isError: sectionHeadersError } = useQuery('sectionHeaders', () => fetchData('/data/section_headers.json'));
-  console.log('catfish here', catfishData);
 
   useEffect(() => {
     const fetchDataPeriodically = () => {
@@ -59,46 +55,24 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    function setEqualHeight() {
-      if (leftColumnRef.current && rightColumnRef.current) {
-        const leftHeight = leftColumnRef.current.offsetHeight;
-        const rightHeight = rightColumnRef.current.offsetHeight;
-        const maxHeight = Math.max(leftHeight, rightHeight);
-        leftColumnRef.current.style.height = `${maxHeight}px`;
-        rightColumnRef.current.style.height = `${maxHeight}px`;
-      }
-    }
-
-    // Call setEqualHeight when the window is resized
-    window.addEventListener('resize', setEqualHeight);
-
-    // Call setEqualHeight once initially
-    setEqualHeight();
-
-    // Cleanup event listener
-    return () => window.removeEventListener('resize', setEqualHeight);
-  }, []);
-
   if (sectionHeadersLoading) return <div>Loading...</div>;
   if (sectionHeadersError) return <div>Error fetching section headers.</div>;
 
   return (
-    <div className="w-5/6 mx-auto flex flex-col">
+    <div className="w-5/6 mx-auto flex h-screen">
       <div className="flex flex-col md:flex-row">
-        <Column width="w-full md:w-1/2">
-          {/* Replace MenuSection with MenuSectionWithNote */}
+        <Column width="w-1/2">
           <MenuSectionWithNote data={{ title: "From the Gulf or Pond", items: gulfPondData }} descriptions={sectionHeaders} />
           <MenuSectionWithBullets data={{ title: "Louisiana Redfish", items: redfishData }} descriptions={bullets} />
           <ImageHolder imageUrl={'/friedFish.jpg'}></ImageHolder>
           <MenuSectionWithNoteAndBullets data={{ title: "Mississippi farm-raised catfish", items: catfishData }} descriptions={bullets} />
         </Column>
-        <Column width="w-full md:w-1/2">
+        <Column width="w-1/2">
           <ImageHolder imageUrl={'/shrimpBoil.jpg'}></ImageHolder>
           <MenuSection data={{ title: "Baskets", items: basketsData }} descriptions={sectionHeaders} />
           <MenuSection data={{ title: "Kids Menu", items: kidsMenu }} descriptions={sectionHeaders} />
           <SelectionMenu title="Drinks" choices={drinkChoices} />
-          <div className="text-2xl text-[#526C3F] font-bold italic">Ask us about our desserts</div>
+          <div className="text-2xl p-6 text-[#526C3F] font-bold italic">Ask us about our desserts</div>
           <Notes notes={notes}></Notes>
         </Column>
       </div>

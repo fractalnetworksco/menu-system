@@ -17,7 +17,7 @@ const MenuSectionWithBullets = ({ data, descriptions }) => {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex-col flex-grow flex justify-between">
       <MenuHeaderWithBullets title={data.title} bullets={sectionDescription ? sectionDescription.bullets : []} />
       {data.items.map((menuItem, index) => (
         <div key={index}>

@@ -20,12 +20,12 @@ const MenuSectionWithNote = ({ data, descriptions }) => {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex-col flex-grow flex justify-between">
       <MenuHeaderWithDescription title={data.title} description={sectionDescription ? sectionDescription.description : ''} />
       {data.items.map((menuItem, index) => (
         <div key={index}>
           {menuItem.note && (
-            <div className="note font-bold text-sm max-w-[16rem] mx-auto">
+            <div className="note font-bold text-xl max-w-[26rem] mx-auto">
               {menuItem.note}
             </div>
           )}
