@@ -105,6 +105,7 @@ function App() {
 
   return (
     <div className="w-5/6 mx-auto flex h-screen">
+
       <Column width="w-1/2" ref={leftColumnRef}>
         <MenuSection data={{ title: "Starters", items: startersData }} descriptions={sectionHeaders} />
         <MenuSection data={{ title: "Salads", items: saladsData }} descriptions={sectionHeaders} />

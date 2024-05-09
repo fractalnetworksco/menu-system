@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import './App.css';
 import Column from './Components/Column.js';
 import MenuItemWithDescription from './Components/MenuItemWithDescription.js';
@@ -20,6 +20,8 @@ const queryClient = new QueryClient();
 function App() {
   const leftColumnRef = useRef(null);
   const rightColumnRef = useRef(null);
+  const [leftColumnHeight, setLeftColumnHeight] = useState(0);
+  const [rightColumnHeight, setRightColumnHeight] = useState(0);
 
   const { data: bbqData } = useQuery('bbq', () => fetchData('/data/bbq_sandwiches.json'));
   const { data: sigSandwiches } = useQuery('sigSandwiches', () => fetchData('/data/signature_dooey_sandwiches.json'));
@@ -42,54 +44,37 @@ function App() {
     };
   });
 
-  useEffect(() => {
-    const fetchDataPeriodically = () => {
-      fetchData('/data/bbq_sandwiches.json');
-      fetchData('/data/signature_dooey_sandwiches.json');
-      fetchData('/data/platters.json');
-      fetchData('/data/combo_platters.json');
-      fetchData('/data/sides.json');
-      fetchData('/data/signature_fries.json');
-      fetchData('/data/section_headers.json');
-    };
-
-    const intervalId = setInterval(fetchDataPeriodically, REFRESH_INTERVAL);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    function setEqualHeight() {
-      if (leftColumnRef.current && rightColumnRef.current) {
-        const leftHeight = leftColumnRef.current.offsetHeight;
-        const rightHeight = rightColumnRef.current.offsetHeight;
-        const maxHeight = Math.max(leftHeight, rightHeight);
-        leftColumnRef.current.style.height = `${maxHeight}px`;
-        rightColumnRef.current.style.height = `${maxHeight}px`;
-      }
+useEffect(() => {
+  const measureHeights = () => {
+    if (leftColumnRef.current && rightColumnRef.current) {
+      const leftHeight = leftColumnRef.current.getBoundingClientRect().height;
+      const rightHeight = rightColumnRef.current.getBoundingClientRect().height;
+      setLeftColumnHeight(leftHeight);
+      setRightColumnHeight(rightHeight);
     }
+  };
 
-    // Call setEqualHeight when the window is resized
-    window.addEventListener('resize', setEqualHeight);
+  // Wait for rendering to complete before measuring
+  setTimeout(measureHeights, 0);
+}, [bbqData, sigSandwiches, plattersData, comboPlatterData, sidesData, sigFries, sectionHeaders, dressingChoices, extraAddOns]);
 
-    // Call setEqualHeight once initially
-    setEqualHeight();
 
-    // Cleanup event listener
-    return () => window.removeEventListener('resize', setEqualHeight);
-  }, []);
+
+
+  console.log('Left Column Height:', leftColumnHeight);
+  console.log('Right Column Height:', rightColumnHeight);
 
   if (sectionHeadersLoading) return <div>Loading...</div>;
   if (sectionHeadersError) return <div>Error fetching section headers.</div>;
 
   return (
-    <div className="w-5/6 mx-auto flex flex-col">
-      <div className="flex flex-col md:flex-row">
-        <Column width="w-full md:w-1/2">
+    <div className="w-5/6 mx-auto flex flex-col h-screen pb-20">
+      <div className="flex flex-grow flex-col md:flex-row">
+        <Column width="w-full md:w-1/2" ref={leftColumnRef}>
           <MenuSection data={{ title: "Bar B Q Sandwiches", items: bbqData }} descriptions={sectionHeaders} />
           <MenuSection data={{ title: "Signature Dooey Sandwiches", items: sigSandwiches }} descriptions={sectionHeaders} />
         </Column>
-        <Column width="w-full md:w-1/2">
+        <Column width="w-full md:w-1/2" ref={rightColumnRef}>
           <ImageHolder imageUrl={'/ribs.jpg'}></ImageHolder>
           <MenuSection data={{ title: "Platters", items: plattersData }} descriptions={sectionHeaders} />
           <MenuSection data={{ title: "Combo Platters", items: comboPlatterData }} descriptions={sectionHeaders} />
@@ -104,7 +89,7 @@ function App() {
           ))}
         </Column>
       </div>
-      <TriColumnSection
+      <TriColumnSection className="staic bottom-0"
         title="Sides"
         items={sidesData}
       />
