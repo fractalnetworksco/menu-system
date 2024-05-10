@@ -10,7 +10,7 @@
   },
   {
     "name": "BOILED SHRIMP 1/2 LB",
-    "price": 12.00,
+    "price": "12.00",
     "description": "Served chilled",
     "location": "bottom"
   },

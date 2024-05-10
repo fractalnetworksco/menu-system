@@ -4,6 +4,17 @@ import MenuItem from './MenuItem';
 import MenuHeaderWithDescription from './MenuHeaderWithDescription';
 
 const MenuSection = ({ data, descriptions }) => {
+  // Check if descriptions is undefined or empty
+  if (!descriptions || descriptions.length === 0) {
+    // Return loading or default content if descriptions is not available
+    return (
+      <div className="mt-8">
+        <MenuHeaderWithDescription title={data.title} description="" />
+        <div>No menu items available</div>
+      </div>
+    );
+  }
+
   // Find the description for the current section
   const sectionDescription = descriptions.find(section => section.section === data.title);
 
