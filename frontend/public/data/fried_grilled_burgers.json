@@ -1,0 +1,12 @@
+[
+  {
+    "name": "SINGLE STACK",
+    "price": 5.99,
+    "description": ""
+  },
+  {
+    "name": "DOUBLE STACK",
+    "price": 8.99,
+    "description": ""
+  }
+]

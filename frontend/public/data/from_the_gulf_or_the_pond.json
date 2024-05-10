@@ -1,0 +1,23 @@
+[
+  {
+    "name": "GULF AND SHRIMP PLATTER",
+    "price": 17.29,
+    "description": "Fried, Grilled, Blackened or Buffalo",
+    "location": "top"
+  },
+  {
+    "note": "Boiled shrimp served with corn and potatoes"
+  },
+  {
+    "name": "BOILED SHRIMP 1/2 LB",
+    "price": "12.00",
+    "description": "Served chilled",
+    "location": "bottom"
+  },
+  {
+    "name": "BOILED SHRIMP 1 LB",
+    "price": 17.29,
+    "description": "Served chilled",
+    "location": "bottom"
+  }
+]

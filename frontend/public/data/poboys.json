@@ -1,0 +1,23 @@
+
+[
+  {
+    "name": "GULF SHRIMP",
+    "price": 11.99,
+    "description": "Fried, Grilled, Blackened, or Buffalo"
+  },
+  {
+    "name": "CATFISH",
+    "price": 10.99,
+    "description": "Fried, Grilled, Blackened, or Buffalo"
+  },
+  {
+    "name": "CHICKEN TENDERS",
+    "price": 10.99,
+    "description": "Fried, Grilled, Blackened, or Buffalo"
+  },
+  {
+    "name": "CRAWFISH",
+    "price": 10.99,
+    "description": ""
+  }
+]

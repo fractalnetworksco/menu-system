@@ -1,0 +1,17 @@
+[
+  {
+    "name": "DOOEY CLUB",
+    "price": 10.49,
+    "description": "Turkey, ham, bacon, cheese, tomato, lettuce, pickle, mayo and mustard, served on house bread"
+  },
+  {
+    "name": "SMOKED TURKEY CLUB",
+    "price": 10.49,
+    "description": "Turkey, bacon, cheese, tomato, lettuce, pickle, mayo and mustard, served on wheat berry bread"
+  },
+  {
+    "name": "SMOKED HAM CLUB",
+    "price": 10.49,
+    "description": "Ham, bacon, cheese, tomato, lettuce, pickle, mayo and mustard, served on wheat berry bread"
+  }
+]

@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.rethink-sans {
+  font-family: 'Raleway', sans-serif;
+}
+
+.brush-script {
+  font-family: 'Brush Script', cursive, 'Arial', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 100;
+  font-style: normal;
+  color: #526C3F;
+  letter-spacing: 4px; 
+}
+
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+
+.oswald-light {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('../public/glacial-indifference/GlacialIndifference-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  font-weight: bold;
+  src: url('../public/glacial-indifference/GlacialIndifference-Regular.otf') format('opentype');
+}
+
+
+.glacial-indifference-regular {
+  font-family: 'Glacial Indifference', sans-serif; 
+}
+
+.glacial-indifference-bold {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: bold;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: 100vh;
+  flex: 1;
+  padding: 20px; /* Adjust the padding as needed */
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "section": "Dressing Choices",
+    "note": "",
+    "choices": ["Thousand Island", "Ranch", "Italian", "House", "Honey Mustard", "Blue Cheese", "Boom Boom Sauce", "Sun-dried tomato Vinaigrette", "Wine and cheese"]
+  },
+  {
+    "section": "Extra Add Ons",
+    "note": "Can be added to all sandwiches.",
+    "choices": ["Bacon $2.09", "Cheese $0.69", "Sauteed onions and peppers $1.69"]
+  },
+  {
+    "section": "Drinks",
+    "note": "",
+    "choices": ["Root Beer", "Sprite", "Coke", "Dr. Pepper", "Water", "Lemonade", "Sweet Tea", "Unsweet Tea"]
+  }
+]
