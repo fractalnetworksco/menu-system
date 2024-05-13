@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+
+  backend:
+    build: ./backend/menuSystem
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/menuSystem:/code  # Adjusted volume mapping
+    environment:
+      - DJANGO_ENV=DEV
+    stdin_open: true
+    tty: true
+
+volumes:
+  postgres_data:
