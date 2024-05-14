@@ -1,6 +1,6 @@
 up:
-	docker-compose up --build --force-recreate -d
+	docker compose up --build --force-recreate -d
 dev:
-	docker-compose up --build
+	docker compose up --build
 exec:
-	docker-compose exec django bash
+	docker compose exec django bash
