@@ -10,8 +10,8 @@ class MenuSection(models.Model):
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    description = models.TextField()
-    section = models.ForeignKey(MenuSection, on_delete=models.CASCADE, related_name='items')
+    description = models.TextField(blank=True)
+    section = models.ForeignKey(MenuSection, on_delete=models.CASCADE, related_name='items', null=True)
 
     def __str__(self):
         return self.name
@@ -35,3 +35,10 @@ class Note(models.Model):
 
     def __str__(self):
         return self.section
+
+class MenuHeader(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
