@@ -1,10 +1,8 @@
 from django.contrib import admin
-from .models import MenuSection, MenuItem, SelectionItem, SelectionSection, Note, MenuHeader
+from .models import MenuSection, MenuItem, Note, MenuHeader
 
 admin.site.register(MenuSection)
 admin.site.register(MenuItem)
-admin.site.register(SelectionItem)
-admin.site.register(SelectionSection)
 admin.site.register(Note)
 admin.site.register(MenuHeader)
 
