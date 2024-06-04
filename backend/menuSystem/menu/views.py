@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from rest_framework import generics
-from .models import MenuItem
-from .serializers import MenuItemSerializer
+from rest_framework.viewsets import ModelViewSet
+from .models import MenuSection
+from .serializers import MenuSectionSerializer
 
-class StarterList(generics.ListAPIView):
-    queryset = MenuItem.objects.filter(section__name="Starters")
-    serializer_class = MenuItemSerializer
+class MenuView(ModelViewSet):
+    queryset = MenuSection.objects.all()
+    serializer_class = MenuSectionSerializer
 

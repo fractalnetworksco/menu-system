@@ -1,0 +1,38 @@
+[
+  {
+    "model": "menu.menuitem",
+    "pk": 83,
+    "fields": {
+      "name": "CHICKEN TENDERS",
+      "price": 10.99,
+      "description": "Fried, Grilled, Blackened or Buffalo"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 84,
+    "fields": {
+      "name": "SHRIMP",
+      "price": 10.99,
+      "description": "Fried, Grilled, Blackened or Buffalo"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 85,
+    "fields": {
+      "name": "SMOKED CHICKEN",
+      "price": 9.99,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 86,
+    "fields": {
+      "name": "PULLED PORK",
+      "price": 9.99,
+      "description": ""
+    }
+  }
+]
