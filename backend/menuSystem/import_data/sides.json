@@ -1,0 +1,137 @@
+[
+  {
+    "model": "menu.menuitem",
+    "pk": 107,
+    "fields": {
+      "name": "Baked Beans",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 108,
+    "fields": {
+      "name": "Coleslaw",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 109,
+    "fields": {
+      "name": "Potato Salad",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 110,
+    "fields": {
+      "name": "Corn on the cob",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 111,
+    "fields": {
+      "name": "Turnip greens",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 112,
+    "fields": {
+      "name": "Waffle fries",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 113,
+    "fields": {
+      "name": "Onion rings",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 114,
+    "fields": {
+      "name": "Mac & Cheese",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 115,
+    "fields": {
+      "name": "Seasoned Red Potatoes",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 116,
+    "fields": {
+      "name": "Sweet Potato fries",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 117,
+    "fields": {
+      "name": "Cheese grits",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 118,
+    "fields": {
+      "name": "Fried okra",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 119,
+    "fields": {
+      "name": "Hush Puppies",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 120,
+    "fields": {
+      "name": "Sweet tater mash",
+      "price": 0.00,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 121,
+    "fields": {
+      "name": "Dooey on da stick",
+      "price": 0.00,
+      "description": ""
+    }
+  }
+]
