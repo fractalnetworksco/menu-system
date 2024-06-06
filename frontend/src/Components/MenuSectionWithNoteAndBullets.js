@@ -2,12 +2,7 @@ import React from 'react';
 import MenuItem from './MenuItem';
 import MenuHeaderWithBullets from './MenuHeaderWithBullets'; // Import MenuHeaderWithBullets
 
-const MenuSectionWithNoteAndBullets = ({ data, descriptions }) => {
-  // Find the description for the current section
-  const sectionDescription = descriptions.find(section => section.section === data.title);
-
-  // Find the note for the current section
-  const sectionNote = data.items.find(item => item.note); // Find the first item with a note
+const MenuSectionWithNoteAndBullets = ({ data, descriptions, menu_note }) => {
 
 
   // Check if the items array is empty
@@ -15,7 +10,7 @@ const MenuSectionWithNoteAndBullets = ({ data, descriptions }) => {
     return (
       <div className="mt-8">
         {/* Use MenuHeaderWithBullets here */}
-        <MenuHeaderWithBullets title={data.title} bullets={sectionDescription ? sectionDescription.bullets : []} />
+        <MenuHeaderWithBullets title={data.title} bullets={descriptions} />
         <div>No menu items available</div>
       </div>
     );
@@ -24,19 +19,34 @@ const MenuSectionWithNoteAndBullets = ({ data, descriptions }) => {
   return (
     <div className="mt-8 flex-col flex-grow flex justify-between">
       {/* Use MenuHeaderWithBullets here */}
-      <MenuHeaderWithBullets title={data.title} bullets={sectionDescription ? sectionDescription.bullets : []} />
-      {data.items.map((menuItem, index) => (
-        <div key={index}>
-          {menuItem.note && (
-            <div className="note font-bold text-xl max-w-[16rem] mx-auto">{menuItem.note}</div>
+      <MenuHeaderWithBullets title={data.title} bullets={descriptions} />
+      {data && (  // Check if data exists
+        <>
+          {data.items.slice(0, 3).map((menuItem, index) => (  // Loop through first 3 items
+            <div key={`item-${index + 1}`}>  {/* Key for first 3 items */}
+              <MenuItem
+                name={menuItem.name}
+                description={menuItem.description}
+                price={menuItem.price}
+              />
+            </div>
+          ))}
+          {menu_note && (  // Check if note exists
+            <div key="note" className="note font-bold text-xl max-w-[26rem] mx-auto">
+              {menu_note}
+            </div>
           )}
-          <MenuItem
-            name={menuItem.name}
-            description={menuItem.description}
-            price={menuItem.price}
-          />
-        </div>
-      ))}
+          {data.items.slice(3).map((menuItem, index) => (  // Loop through remaining items
+            <div key={`item-${index + 4}`}>  {/* Key for remaining items */}
+              <MenuItem
+                name={menuItem.name}
+                description={menuItem.description}
+                price={menuItem.price}
+              />
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

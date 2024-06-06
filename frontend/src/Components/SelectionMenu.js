@@ -11,7 +11,7 @@ const SelectionMenu = ({ title, choices }) => {
           <div className="flex flex-wrap justify-center">
             {choices.map((choice, index) => (
               <React.Fragment key={index}>
-                <div className="pr-2 text-lg italic text-[#474B4E]">{choice}</div>
+                <div className="pr-2 text-lg italic text-[#474B4E]">{choice.name}</div> {/* Access name property within each choice object */}
                 {index !== choices.length - 1 && <div className="pr-2 text-[#474B4E]">&middot;</div>}
               </React.Fragment>
             ))}
@@ -21,5 +21,6 @@ const SelectionMenu = ({ title, choices }) => {
     </div>
   );
 };
+
 
 export default SelectionMenu;

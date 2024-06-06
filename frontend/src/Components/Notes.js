@@ -5,7 +5,7 @@ const Notes = ({ notes }) => {
     <div className="border border-gray-800 rounded p-4 border-2"> {/* Added border-2 class for thicker border */}
       {notes.map((note, index) => (
         <div key={index} className="mb-4">
-          <p className="pr-2 text-lg italic font-bold text-[#474B4E]">{note.section}: <span className="pr-2 font-normal italic text-[#474B4E]">{note.description}</span></p>
+          <p className="pr-2 text-lg italic font-bold text-[#474B4E]">{note.name}: <span className="pr-2 font-normal italic text-[#474B4E]">{note.description}</span></p>
         </div>
       ))}
     </div>
