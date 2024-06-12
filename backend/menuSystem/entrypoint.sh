@@ -14,7 +14,7 @@ if [[ "$DJANGO_ENV" = 'DEV' ]]; then
     # python3 manage.py loaddata fixtures/device_version.json
     # python3 manage.py loaddata fixtures/plugin_version.json
     python3 manage.py loaddata initial_data.json
-    python3 manage.py runserver 0.0.0.0:8080
+    python3 manage.py runserver 0.0.0.0:8000
 
 elif [[ "$DJANGO_ENV" = 'TEST' ]]; then
     # runs Django in DEBUG mode
@@ -24,7 +24,7 @@ elif [[ "$DJANGO_ENV" = 'TEST' ]]; then
     python3 manage.py loaddata fixtures/test_data.json
     python3 manage.py loaddata fixtures/device_version.json
     python3 manage.py loaddata fixtures/plugin_version.json
-    python3 manage.py runserver 0.0.0.0:8080
+    python3 manage.py runserver 0.0.0.0:8000
 
 elif [[ "$DJANGO_ENV" = "PROD" ]]; then
     python3 manage.py loaddata fixtures/app_categories.json
@@ -32,7 +32,7 @@ elif [[ "$DJANGO_ENV" = "PROD" ]]; then
     python3 manage.py loaddata fixtures/device_version.json
     python3 manage.py loaddata fixtures/plugin_version.json
     python manage.py collectstatic --no-input
-    gunicorn -b 0.0.0.0:8080 hive_backend.wsgi
+    gunicorn -b 0.0.0.0:8000 hive_backend.wsgi
 
 fi
 

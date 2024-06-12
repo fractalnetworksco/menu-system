@@ -12,7 +12,7 @@ services:
   backend:
     build: ./backend/menuSystem
     ports:
-      - "8000:8080"
+      - "8000:8000"
     volumes:
       - ./backend/menuSystem:/code  
     environment:
