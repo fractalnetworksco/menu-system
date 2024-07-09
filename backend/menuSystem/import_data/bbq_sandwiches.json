@@ -1,0 +1,101 @@
+[
+  {
+    "model": "menu.menuitem",
+    "pk": 25,
+    "fields": {
+      "name": "PULLED PORK SMALL",
+      "price": 9.99,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 26,
+    "fields": {
+      "name": "PULLED PORK LARGE",
+      "price": 10.49,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 27,
+    "fields": {
+      "name": "PULLED CHICKEN",
+      "price": 10.49,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 28,
+    "fields": {
+      "name": "BEEF BRISKET",
+      "price": 15.99,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 29,
+    "fields": {
+      "name": "BOSS HOG",
+      "price": 11.49,
+      "description": "Pulled pork topped with smoked bacon"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 30,
+    "fields": {
+      "name": "TEXAS TOAST BBQ",
+      "price": 11.49,
+      "description": "Your choice of our signature meats on our signature Texas toast"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 31,
+    "fields": {
+      "name": "DOOEY CUBAN",
+      "price": 11.29,
+      "description": "Pulled pork and ham, pickles, mustard, and Swiss cheese"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 32,
+    "fields": {
+      "name": "PULLED PORK GRILLED CHEESE",
+      "price": 11.49,
+      "description": "Grilled cheese stuffed with pulled pork, jalapeno, pimento cheese and cheddar, served on Texas Toast"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 33,
+    "fields": {
+      "name": "TRIPLE THREAT",
+      "price": 11.49,
+      "description": "Pulled pork topped with smoked Bologna, bacon, BBQ sauce and coleslaw"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 34,
+    "fields": {
+      "name": "CHEESY PIGGY",
+      "price": 11.49,
+      "description": "Pulled pork topped with queso and choice of sauce"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 35,
+    "fields": {
+      "name": "BIG PORK MAC N CHEESE",
+      "price": 11.49,
+      "description": "Pulled pork topped with queso and choice of sauce"
+    }
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "model": "menu.menuitem",
+    "pk": 96,
+    "fields": {
+      "name": "Bacon",
+      "price": 2.09,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 97,
+    "fields": {
+      "name": "Cheese",
+      "price": 0.69,
+      "description": ""
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 98,
+    "fields": {
+      "name": "Sauteed Onions and Peppers",
+      "price": 1.69,
+      "description": ""
+    }
+  }
+]

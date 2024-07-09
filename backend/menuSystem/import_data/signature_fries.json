@@ -1,0 +1,11 @@
+[
+    {
+      "model": "menu.menuitem",  
+      "pk": 122,
+      "fields": {
+        "name": "SIGNATURE DOOEY CHEESE FRIES",
+        "price": 11.99,
+        "description": "Waffle fries topped with bacon and queso cheese. Choice of pulled pork, pulled chicken, or chicken tenders"
+      }
+    }
+]

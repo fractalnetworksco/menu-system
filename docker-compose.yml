@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+  backend:
+    build: ./backend/menuSystem
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/menuSystem:/code  
+    environment:
+      - DJANGO_ENV=DEV
+    stdin_open: true
+    tty: true
+  link:
+    image: fractalnetworks/gateway-client:latest
+    environment:
+      LINK_DOMAIN: demo.test.starkville.net
+      EXPOSE: nginx:80
+      GATEWAY_CLIENT_WG_PRIVKEY: OMFzlNX1nXH+cfhdo91jTQfv2UYSwJ/9YGLFnELwlHc=
+      GATEWAY_LINK_WG_PUBKEY: 15bcEIXIXl6X1j2Yw3+tL6lofQS+x3uYrXillRPbGyA=
+      GATEWAY_ENDPOINT: 5.161.127.102:49179
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - frontend
+      - backend
+
+
+volumes:
+  postgres_data:

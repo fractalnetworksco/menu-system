@@ -1,0 +1,47 @@
+[
+  {
+    "model": "menu.menuitem",
+    "pk": 52,
+    "fields": {
+      "name": "1 FILLET",
+      "price": 9.99,
+      "description": "Served with one side choice and Hush Puppies"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 53,
+    "fields": {
+      "name": "2 FILLETS",
+      "price": 16.99,
+      "description": "Served with 2 side choice and Hush Puppies"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 54,
+    "fields": {
+      "name": "3 FILLETS",
+      "price": 23.25,
+      "description": "Served with 2 side choice and Hush Puppies"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 55,
+    "fields": {
+      "name": "1 PIECE",
+      "price": 11.49,
+      "description": "Served with one side choice and Hush Puppies"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "pk": 56,
+    "fields": {
+      "name": "2 PIECE",
+      "price": 19.99,
+      "description": "Served with 2 side choice and Hush Puppies"
+    }
+  }
+]
