@@ -13,7 +13,7 @@ if [[ "$DJANGO_ENV" = 'DEV' ]]; then
     # python3 manage.py loaddata fixtures/dev_data.json
     # python3 manage.py loaddata fixtures/device_version.json
     # python3 manage.py loaddata fixtures/plugin_version.json
-    python3 manage.py loaddata initial_data.json
+    # python3 manage.py loaddata initial_data.json
     python3 manage.py runserver 0.0.0.0:8000
 
 elif [[ "$DJANGO_ENV" = 'TEST' ]]; then
