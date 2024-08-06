@@ -6,14 +6,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useQuery, QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
-const [existingData, setExistingData] = useState([]);
 function App() {
+const [existingData, setExistingData] = useState([]);
 const { isLoading, error, data, isFetching, refetch } = useQuery({
   queryKey: ['menuData'],
   queryFn: () =>
     fetch('https://demo.test.starkville.net/menu').then((res) => {
       let data = res.json()
       setExistingData(data);
+      return data;
     }).catch((error) => {
           console.error('Fetch error:', error);
           return existingData; // Return a default value or handle the error as needed

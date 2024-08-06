@@ -131,4 +131,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", 
     "http://demo.test.starkville.net",
     "https://demo.test.starkville.net",
+    "https://dev.test.starkville.net",
 ]

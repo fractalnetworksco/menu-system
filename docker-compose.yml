@@ -19,6 +19,17 @@ services:
       - DJANGO_ENV=DEV
     stdin_open: true
     tty: true
+  # link:
+  #   image: fractalnetworks/gateway-client:latest
+  #   environment:
+  #     LINK_DOMAIN: dev.littledooey.starkville.net
+  #     EXPOSE: nginx:80
+  #     GATEWAY_CLIENT_WG_PRIVKEY: 4JWwZxsbfGG4OvR4rrQDmE7LE7pQZTzcSOYaQPY5JF4=
+  #     GATEWAY_LINK_WG_PUBKEY: FXY/wR95dc7hE6SXNJmBn0YyO2RZclHwYwiQLaa00Gk=
+  #     GATEWAY_ENDPOINT: 5.161.251.75:32772
+  #   restart: unless-stopped
+  #   cap_add:
+  #     - NET_ADMIN
   link:
     image: fractalnetworks/gateway-client:latest
     environment:
