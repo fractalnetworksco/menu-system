@@ -10,7 +10,7 @@ import ImageHolder from './Components/ImageHolder.js';
 
 function App({ data }) {
   const gulf_or_pond = data.find(section => section.name === "From the Gulf or Pond");
-  const la_redfish = data.find(section => section.name === "Louisiana Redfish");
+  const la_redfish = data.find(section => section.name === "8oz. Salmon Filet");
   const catfish = data.find(section => section.name === "Mississippi farm-raised catfish");
   const baskets = data.find(section => section.name === "Baskets");
   const kids = data.find(section => section.name === "Kids Menu");
