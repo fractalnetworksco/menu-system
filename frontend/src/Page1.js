@@ -26,7 +26,7 @@ function App({ data }) {
 
       <Column width="w-1/2">
         <MenuSection data={{ title: burgers.name, items: burgers.items }} descriptions={burgers.note} />
-        <p className="pr-2 italic pb-2 pt-6 font-bold text-[#474B4E]">Add-on: <span className="pr-2 font-normal italic text-[#474B4E]">Cheese $.69, Bacon $2.69</span></p>
+        <p className="pr-2 italic pb-2 pt-6 font-bold text-[#474B4E]">Add-on: <span className="pr-2 font-normal italic text-[#474B4E]">Cheese $.50, Bacon $1.69</span></p>
         <ImageHolder imageUrl="/poboy.jpg" height="300px" />
         <MenuSection data={{ title: poboys.name, items: poboys.items }} descriptions={poboys.note} />
         <MenuSection data={{ title: wraps.name, items: wraps.items }} descriptions={wraps.note} />
